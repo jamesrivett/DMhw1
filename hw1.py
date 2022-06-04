@@ -8,7 +8,7 @@ import csv
 
 def read_csv_file(filename):
     """this function reads a .CSV file, and returns the dataset as a list"""
-    with open(filename,'r') as f:
+    with open(filename,'r', encoding="UTF-8") as f:
         reader = csv.reader(f,delimiter=',', quotechar='"')
         dataset = [ line for line in reader ]
     return dataset
