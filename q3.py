@@ -29,11 +29,12 @@ for movie in movie_data:
     movie_id,title,genres = movie
     movie_titles[movie_id] = title
 
-# make a list of all the user ID's that reviewed 'Toy Story (1995)'
+# make a list of all the user ID's that reviewed 'Toy Story (1995)' a 5.0
 TSUsers = set()
 for line in rating_data:
     userId,movieId,rating,timestamp = line
     if movie_titles[movieId] != 'Toy Story (1995)': continue
+    if float(rating) != 5.0: continue
     TSUsers.add(userId)
 
 # next, we compute the average rating for each movie reviewed by a TSUser
@@ -69,7 +70,7 @@ ranking.sort(key=key_function,reverse=True)
 
 # print the top-10 movies
 print("============================================")
-print("== Top 10 movies with at least %d ratings from users who reviewed 'Toy Story (1995)'" % (min_ratings))
+print("== Top 10 movies with at least %d ratings from users who rated 'Toy Story (1995)' a 5.0" % (min_ratings))
 print("============================================")
 for line in ranking[:10]:
     # each stat entry has the movie id, the average rating, and #-of-ratings
